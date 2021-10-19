@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 
 
-class ContactsConfig(AppConfig):
+class OrdersConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'Contacts'
-    verbose_name = '联系人管理'
+    name = 'Orders'
+    verbose_name = '订单管理'

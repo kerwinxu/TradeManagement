@@ -5,7 +5,7 @@ class Company(models.Model):
     company_name = models.CharField(verbose_name="公司名称",max_length=20) 
     address = models.CharField(verbose_name="地址",max_length=200, null=True,blank=True)
     phone = models.CharField(verbose_name="电话号码", max_length=50, null=True,blank=True)
-    webside = models.CharField(verbose_name="网站", max_length=100, null=True,blank=True)
+    webside = models.URLField(verbose_name="网站", max_length=100, null=True,blank=True)
 
     class Meta:
         verbose_name = '公司' # 单个对象的名称
@@ -24,7 +24,7 @@ class Contacts(models.Model):
     address = models.CharField(verbose_name="地址",max_length=200, null=True,blank=True)
     phone = models.CharField(verbose_name="电话号码", max_length=50, null=True,blank=True)
     mobile_phone = models.CharField(verbose_name="手机号码", max_length=50, null=True,blank=True)
-    email = models.CharField(verbose_name="Email", max_length=50, null=True,blank=True)
+    email = models.EmailField(verbose_name="Email")
     remark = models.CharField(verbose_name="备注",max_length=200, null=True,blank=True)
 
     class Meta:
