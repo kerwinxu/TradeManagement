@@ -34,5 +34,5 @@ class ProductImageInline(admin.TabularInline):
 class ProductAdmin(admin.ModelAdmin):
     inlines = [ProductAttributeValueInline, ProductImageInline]
     # 我要可以多种筛选
-    list_filter = ('category', 'contact')
+    search_filter = ('category', 'contact')
 

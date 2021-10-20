@@ -15,11 +15,11 @@ class Company(models.Model):
 
 
 # Create your models here.
-class Contacts(models.Model):
+class Contact(models.Model):
     """联系人"""
     # 我这个是中国式的联系人，只有一个姓名
     chinese_name = models.CharField(verbose_name="姓名", max_length=10) 
-    company = models.ForeignKey(Company,on_delete=models.CASCADE, verbose_name="公司", null=True,blank=True)
+    company = models.ForeignKey(Company,on_delete=models.DO_NOTHING, verbose_name="公司", null=True,blank=True)
     job = models.CharField(verbose_name="职务", max_length=20, null=True,blank=True)
     address = models.CharField(verbose_name="地址",max_length=200, null=True,blank=True)
     phone = models.CharField(verbose_name="电话号码", max_length=50, null=True,blank=True)

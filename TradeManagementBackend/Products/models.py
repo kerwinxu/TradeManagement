@@ -1,5 +1,5 @@
 from django.db import models
-from Contacts.models import Contacts
+from Contacts.models import Contact
 from django.utils.html import format_html
 
 # Create your models here.
@@ -16,7 +16,7 @@ class ProductCategory(models.Model):
 class ProductAttribute(models.Model):
     """产品属性类"""
     attribute_name = models.CharField(verbose_name="属性名称", max_length=50)
-    category = models.ForeignKey(ProductCategory,  on_delete=models.CASCADE, related_name="attributes")
+    category = models.ForeignKey(ProductCategory,  on_delete=models.DO_NOTHING, related_name="attributes")
 
     class Meta:
         verbose_name = '产品属性' # 单个对象的名称
@@ -28,8 +28,8 @@ class Product(models.Model):
     """产品类"""
     product_name = models.CharField(verbose_name="产品名称", max_length=100)
     product_style = models.CharField(verbose_name="产品款号", max_length=100, null=True)
-    category = models.ForeignKey(ProductCategory,on_delete=models.CASCADE, verbose_name="类别")
-    contact = models.ForeignKey(Contacts,on_delete=models.CASCADE,blank=True,null=True, verbose_name="联系人")
+    category = models.ForeignKey(ProductCategory,on_delete=models.DO_NOTHING, verbose_name="类别")
+    contact = models.ForeignKey(Contact,on_delete=models.DO_NOTHING,blank=True,null=True, verbose_name="联系人")
 
     class Meta:
         verbose_name = '产品' # 单个对象的名称
