@@ -14,12 +14,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.contrib.admin.sites import site
 from django.urls import path
 
+from PermList import urls
+from . import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
+    path('',admin.site.urls), # 默认专业也是这个。
     path('admin/', admin.site.urls),
 ]
+# 添加静态的资源目录
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-admin.site.site_header = "UMSRA Admin"
-admin.site.site_title = "UMSRA Admin Portal"
-admin.site.index_title = "Welcome to UMSRA Researcher Portal"
+admin.site.site_header = "中小贸易公司管理系统"
+admin.site.site_title = "欢迎找我来开发各类中小企业管理系统，淘宝：鑫意雅"
+admin.site.index_title = "中小贸易公司管理系统"
+

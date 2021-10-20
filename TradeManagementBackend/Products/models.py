@@ -1,5 +1,6 @@
 from django.db import models
 from Contacts.models import Contacts
+from django.utils.html import format_html
 
 # Create your models here.
 
@@ -54,8 +55,18 @@ class ProductAttributeValue(models.Model):
 class ProductImage(models.Model):
     """产品图片类"""
     product = models.ForeignKey(Product, on_delete=models.CASCADE) # 产品
-    value = models.ImageField(max_length=200)
+    value = models.ImageField(upload_to='photos/%Y/%m/%d', max_length=200)
 
+    def image_data(self):
+        if self.value:
+            return format_html(
+                '<img src="{}" width="100px" height="100px"/>',
+                self.value.url)
+        else:
+            return "没有图片"
+
+    image_data.short_description = '图片'
+    
     class Meta:
         verbose_name = '产品图片' # 单个对象的名称
         verbose_name_plural = verbose_name # 复数对象名称

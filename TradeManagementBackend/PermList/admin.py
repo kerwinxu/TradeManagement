@@ -16,4 +16,3 @@ class PermissionListAdmin(GuardedModelAdminBase):
 
 admin.site.register(PermissionList, PermissionListAdmin)
 
-admin.site.site_header = "贸易公司管理系统"

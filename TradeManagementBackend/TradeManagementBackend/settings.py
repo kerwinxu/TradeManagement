@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-from django.contrib import admin
+import os
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -67,7 +67,7 @@ ROOT_URLCONF = 'TradeManagementBackend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'template')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -136,3 +136,7 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# 如下两个是配置媒体的
+MEDIA_URL = 'media/' # 这个是在url中显示的地址
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # 这个是在硬盘上实际的地址。

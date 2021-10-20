@@ -2,7 +2,7 @@ from typing_extensions import ParamSpecArgs
 from django.contrib import admin
 from django.http.request import HttpRequest
 from .models import Product, ProductAttribute, ProductAttributeValue, ProductCategory, ProductImage
-
+from django.utils.html import format_html
 # Register your models here.
 
 # 一个中小的贸易公司企业，都是要推销产品的，这里所有的都可以修改，也就是全局的。
@@ -25,6 +25,9 @@ class ProductAttributeValueInline(admin.TabularInline):
 
 class ProductImageInline(admin.TabularInline):
     model = ProductImage
+    # list_display  = ("value", "image_data") # 很多教程上写的是显示这个，但我电脑上却只用下一个就可以了。
+    readonly_fields = ('image_data',)
+
 
 
 @admin.register(Product)
